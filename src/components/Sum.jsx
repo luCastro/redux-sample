@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "./Card";
+import { connect } from "react-redux";
 
-export default (props) => {
+const Sum = (props) => {
   //Destructoring way to get the props and create a variable
   const { min, max } = props;
   return (
@@ -15,3 +16,12 @@ export default (props) => {
     </Card>
   );
 };
+
+function mapStateToProps(state) {
+  return {
+    min: state.numbers.min,
+    max: state.numbers.max,
+  };
+}
+
+export default connect(mapStateToProps)(Sum);

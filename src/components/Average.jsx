@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import Card from "./Card";
 
-export default (props) => {
-  const min = props.min;
-  const max = props.max;
+const Average = (props) => {
+  const { min, max } = props;
   return (
     <Card title="Average" green>
       <div>
@@ -15,3 +16,17 @@ export default (props) => {
     </Card>
   );
 };
+
+function mapStateToProps(state) {
+  return {
+    min: state.numbers.min,
+    max: state.numbers.max,
+  };
+}
+
+export default connect(mapStateToProps)(Average);
+
+//Could be this way bellow:
+//Nominal function
+// function Avarage(props){
+// }
